@@ -31,6 +31,7 @@ class ResourcesController < ApplicationController
     if current_user.username == "taha.jalil"
       @resources = Resource.all
     else
+      @city = City.find_by_admin_id(@admin.id)
       @resources = @admin.resources.order('created_at ASC')
     end
   end
