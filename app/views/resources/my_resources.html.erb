@@ -2,42 +2,44 @@
   <div class="row">
     <div class="columns xsmall-12">
       <h5 class="epsilon"><%= link_to "Add Resource", new_admin_resource_path(current_user) %></h5>
-      <ul class="columns large-block-grid-4 medium-block-grid-3 small-block-grid-2 xsmall-block-grid-1">
-        <% @resources.each do |resource| %>
-        <li class="resource-box">
-          <a href="<%= resource.link_to_document %>">
-            <% if resource.type_of_document == "Text File" %>
-              <div class="text-center icon-doc">
-            <% elsif resource.type_of_document == "Audio File" %>
-              <div class="text-center icon-audio">
-            <% elsif resource.type_of_document == "Video File" %>
-              <div class="text-center icon-video">
-            <% end %>
+      <%# if @resources.present? %>
+        <ul class="columns large-block-grid-4 medium-block-grid-3 small-block-grid-2 xsmall-block-grid-1">
+          <% @resources.each do |resource| %>
+          <li class="resource-box">
+            <a href="<%= resource.link_to_document %>">
+              <% if resource.type_of_document == "Text File" %>
+                <div class="text-center icon-doc">
+              <% elsif resource.type_of_document == "Audio File" %>
+                <div class="text-center icon-audio">
+              <% elsif resource.type_of_document == "Video File" %>
+                <div class="text-center icon-video">
+              <% end %>
 
-                <% if resource.series %>
-                  <p class="type"><%= resource.series %></p>
-                <% end %>
-                
-                <h4 class="delta"><%= resource.title %></h4>
-                <div class="resource-posted">
-                  <p class="tiny">Posted On: <%= resource.created_at.to_s(:just_date) %></p>
-                </div>
-
-                <% if resource.link_to_download.present? %>
-                  <div class="download-link">
-                    <%= link_to "Or click here to download", resource.link_to_download, class: "tiny" %>
-                  </div>
-                <% end %>
+                  <% if resource.series %>
+                    <p class="type"><%= resource.series %></p>
+                  <% end %>
                   
-                <p class="tiny">Last Updated: <%= resource.updated_at.to_s(:just_date) %></p>
-                
-                <%= link_to "Edit", edit_admin_resource_path(current_user, resource), class: "button tiny orange" %>
-                <%= link_to "Delete", admin_resource_path(current_user, resource), method: :delete, class: "button tiny red", data: {confirm: "Are you sure?"} %>
-              </div>
-          </a>
-        </li>
-        <% end %>
-      </ul>
+                  <h4 class="delta"><%= resource.title %></h4>
+                  <div class="resource-posted">
+                    <p class="tiny">Posted On: <%= resource.created_at.to_s(:just_date) %></p>
+                  </div>
+
+                  <% if resource.link_to_download.present? %>
+                    <div class="download-link">
+                      <%= link_to "Or click here to download", resource.link_to_download, class: "tiny" %>
+                    </div>
+                  <% end %>
+                    
+                  <p class="tiny">Last Updated: <%= resource.updated_at.to_s(:just_date) %></p>
+                  
+                  <%= link_to "Edit", edit_admin_resource_path(current_user, resource), class: "button tiny orange" %>
+                  <%= link_to "Delete", admin_resource_path(current_user, resource), method: :delete, class: "button tiny red", data: {confirm: "Are you sure?"} %>
+                </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      <%# end %>
     </div>
   </div>
 </section>
