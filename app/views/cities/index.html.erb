@@ -2,7 +2,7 @@
   <div class="row">
     <div class="columns xsmall-12 text-center">
       <h2 class="gamma">Jagah Jagah, Har Jagah. Wherever Pakistanis Live.</h2>
-      <p class="punch text-center">We harness the brightest minds around the world to design, prototype and implement sustainable business models that have a significant impact in Pakistan and beyond. Click on your city below and become a part of this movement!</p>
+      <p class="punch text-center">We harness the brightest minds around the world to design, prototype and implement sustainable business models that have a significant impact in Pakistan and beyond. <!-- Click on your city below and become a part of this movement! --></p>
     </div>
   </div>
 </section>
@@ -16,11 +16,14 @@
           <div id="city-<%= city.slug %>" class="admin-city-panel column large-3 medium-3 small-6 xsmall-12 text-center" style="background-image: url(<%= city.hero_photo %>)">
 
             <% if city.eventbrite_page.present? %>
-              <% if city.name == "Melbourne" || city.name == "Toronto" || city.name == "Boston" %>
-                <a href="<%= city_path(city) %>">
-              <% else %>
-                <a href="<%= city.eventbrite_page %>">
-              <% end %>
+              <!-- commenting out city page links in the interim -->
+              <%# if city.name == "Melbourne" || city.name == "Toronto" || city.name == "Boston" %>
+                <!-- <a href="<%#= city_path(city) %>"> -->
+              <%# else %>
+                <!-- <a href="<%#= city.eventbrite_page %>"> -->
+              <%# end %>
+
+              <a href="javascript:void(0)">
               
                 <div class="v-wrapper">
                   <div class="v-inner">
