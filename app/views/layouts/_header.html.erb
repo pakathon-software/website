@@ -47,7 +47,12 @@
           <% else %>
             <li><a href="/careers">Careers</a></li>
           <% end %>
-
+          
+          <% if request.original_url == "http://www.pakathon.org/donate" %>
+            <li><a href="/donate" class="active">Donate</a></li>
+          <% else %>
+            <li><a href="/donate">Donate</a></li>
+          <% end %>
           <li><a href="https://muut.com/pakathon">Forum</a></li>
         </ul>
 

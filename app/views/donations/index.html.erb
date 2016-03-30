@@ -1,0 +1,160 @@
+<section id="careers-main">
+  <div class="row">
+    <div class="columns large-12 medium-12 small-12 xsmall-12 text-center">
+      <h1 class="beta">DONATE</h1>
+
+      <div class="careers-description">
+        <p class="text-center first">We are looking to groom the next generation of leaders and have high expectations from all our team members.</p>
+        <p class="text-center second">Please consider donating to help us make a difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#4a4a4a; color:#fff; padding:20px;" class="donate">
+<h3 id="payment-heading" style="color:#fff;">Please Donate here:</h3>
+  <div class="job-description large-12 medium-12 small-12 xsmall-12 text-left">
+    <form action="" method="POST" id="payment-form">
+      <div class="row" style="margin-bottom:20px;color:#e54d42;">
+        <span class="row payment-errors"></span>
+      </div>
+
+      <div class="row">
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">Amount</span>
+            <input type="text" size="20" name="amount"/>
+          </label>
+        </div>
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">Card Number</span>
+            <input type="text" size="20" data-stripe="number"/>
+          </label>
+        </div>
+
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">CVC</span>
+            <input type="text" size="4" data-stripe="cvc"/>
+          </label>
+        </div>
+
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">Expiration (MM/YYYY)</span>
+            <select class="donate_select" data-stripe="exp-month"></select>
+          </label>
+          <span> / </span>
+          <select data-stripe="exp-year"></select>
+        </div>
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">Name</span>
+            <input type="text" size="100" name="name"/>
+          </label>
+        </div>
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <span class="donate_label">Email</span>
+            <input type="email" size="60" name="email"/>
+          </label>
+        </div>
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <label>
+            <input type="checkbox" name="recurring"/>
+            <span>Set up recurring payments</span>
+          </label>
+        </div>
+        
+        <div class="row form-row" style="margin-bottom:20px;">
+          <button class="button" type="submit">Submit Payment</button>
+        </div>
+
+        
+      </div>
+    </form>
+  </div>
+</section>
+<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.2.min.js"   integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous">\x3C/script>')</script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('<%=@publishable_key%>');
+  $(document).ready(function(){
+    
+    enableSubmit();
+    initializeExpirationFields();  
+  });
+  
+  function initializeExpirationFields(){
+      var html = "";
+      for(var i=1; i < 13; i++){
+        var month = i;
+        if((month + "").length == 1){
+          month = "0" + month;
+        }
+        html += "<option val='" + month + "'>" + month + "</option>";
+      }
+      $("[data-stripe='exp-month']").html(html);
+    
+      html = "";
+      for(var i=0; i < 50; i++){
+        html += "<option val='" + (2016 + i) + "'>" + (2016 + i) + "</option>";
+      }
+    
+      $("[data-stripe='exp-year']").html(html);
+    }
+    
+    
+    function enableSubmit(){
+      $('#payment-form').off("submit").on("submit", function(event) {
+      var $form = $(this);
+
+      $form.find('button').prop('disabled', true);
+
+      Stripe.card.createToken($form, function(status, response){
+        if(response.error !== undefined && response.error.message != ""){
+          $(".payment-errors").text(response.error.message);
+          $form.find('button').prop('disabled', false);
+        }else{
+          $form.find('button').prop('disabled', false);
+          var amount = $("[name='amount']").val();
+          if(isNaN(amount)){
+            alert("Amount is not valid");
+          }else{
+            amount = 100 * parseFloat($("[name='amount']").val());
+            var email = $("[name='email']").val();
+            var name = $("[name='name']").val();
+            var recurring = $("[name='recurring']").val();
+            
+            $.ajax({
+              url: "/pay",
+              method: "GET",
+              data: { stripeToken : response.id , amount: amount, email: email, name: name, recurring: recurring},
+              dataType: "html",
+              success: function(data){
+                if(data == "accepted"){
+                  $("#payment-heading").text("Your payment was accepted. Thank you for your donation!");
+                  $(".job-description").remove();
+                }else{
+                  $(".payment-errors").text("Sorry, but your card was declined.");
+                }
+              },
+              error: function(error){
+                console.log(error);
+              }
+            });
+          }
+        }
+      });
+      return false;
+    });
+  }  
+  // ...
+</script>
+

@@ -1,0 +1,28 @@
+.donations {
+    #hero {
+        padding: 90px 0;
+    }
+    select{
+        height: 35px;
+        border-radius: 0px;
+        border: none;
+        -webkit-appearance: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 14px;
+    }
+    input{
+        height: 35px;
+        font-size: 14px;
+    }
+    input[type=checkbox]{
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.donate_label{
+  width: 100px;
+  display: inline-block;
+}
+
