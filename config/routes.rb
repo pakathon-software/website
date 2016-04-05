@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :cities, only: [:index, :show]
 
   resources :admins, only: [:show] do
-    resources :cities, only: [:new, :create, :edit, :update] do
+    resources :cities, only: [:new, :show, :create, :edit, :update] do
       member do
         get 'dashboard'
       end
