@@ -11,76 +11,109 @@
   </div>
 </section>
 
-<section style="background:#4a4a4a; color:#fff; padding:20px;" class="donate">
-<h3 id="payment-heading" style="color:#fff;">Please Donate here:</h3>
-  <div class="job-description large-12 medium-12 small-12 xsmall-12 text-left">
-    <form action="" method="POST" id="payment-form">
-      <div class="row" style="margin-bottom:20px;color:#e54d42;">
-        <span class="row payment-errors"></span>
-      </div>
-
-      <div class="row">
+<section class="donate">
+  <div class="center_aligner">
+    <h3 id="payment-heading" style="color:#fff;">Please Donate here:</h3>
+    <div class="job-description large-12 medium-12 small-12 xsmall-12 text-left">
+      <form action="" method="POST" id="payment-form">
         
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">Amount</span>
-            <input type="text" size="20" name="amount"/>
-          </label>
-        </div>
-        
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">Card Number</span>
-            <input type="text" size="20" data-stripe="number"/>
-          </label>
+        <div class="row payment-error-row">
+          <span class="row form-row payment-errors"></span>
         </div>
 
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">CVC</span>
-            <input type="text" size="4" data-stripe="cvc"/>
-          </label>
-        </div>
+        <div class="row" style="width:100%; max-width:500px;">
 
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">Expiration (MM/YYYY)</span>
-            <select class="donate_select" data-stripe="exp-month"></select>
-          </label>
-          <span> / </span>
-          <select data-stripe="exp-year"></select>
-        </div>
-        
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">Name</span>
-            <input type="text" size="100" name="name"/>
-          </label>
-        </div>
-        
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <span class="donate_label">Email</span>
-            <input type="email" size="60" name="email"/>
-          </label>
-        </div>
-        
-        <div class="row form-row" style="margin-bottom:20px;">
-          <label>
-            <input type="checkbox" name="recurring"/>
-            <span>Set up recurring payments</span>
-          </label>
-        </div>
-        
-        <div class="row form-row" style="margin-bottom:20px;">
-          <button class="button" type="submit">Submit Payment</button>
-        </div>
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">Amount</span>
+              <input type="text" size="20" name="amount"/>
+            </label>
+          </div>
 
-        
-      </div>
-    </form>
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">Card Number</span>
+              <input type="text" size="20" data-stripe="number"/>
+            </label>
+          </div>
+
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">CVC</span>
+              <input type="text" size="4" data-stripe="cvc"/>
+            </label>
+          </div>
+
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">Expiration (MM/YYYY)</span>
+              <select class="donate_select" data-stripe="exp-month"></select>
+            </label>
+            <span> / </span>
+            <select data-stripe="exp-year"></select>
+          </div>
+
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">Name</span>
+              <input type="text" size="100" name="name"/>
+            </label>
+          </div>
+
+          <div class="row form-row">
+            <label>
+              <span class="donate_label">Email</span>
+              <input type="email" size="60" name="email"/>
+            </label>
+          </div>
+
+<!--
+          <div class="row form-row" style="margin-bottom:20px;">
+            <label>
+              <input type="checkbox" name="recurring"/>
+              <span>Set up recurring payments</span>
+            </label>
+          </div>
+-->
+
+          <div class="row form-row" style="float:right;width:100%; max-width:500px;margin:0 auto;margin-bottom:50px;margin-top:50px;">
+            <button class="button" type="submit" style="float:right;">Submit Payment</button>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
   </div>
 </section>
+
+<section class="donate process">
+    <div class="center_aligner" class="donate loading">
+        <h3 id="payment-heading" style="color:#fff;">Processing your payment...</h3>
+        <div class="meter green animate">
+			<span style="width: 100%"><span></span></span>
+		</div>
+        <p style="max-width:450px;color:#fff;margin-top:50px;margin-bottom:200px;">Please wait while your payment is being processed. Please don't hit the browser back button while your payment is being processed.</p>
+    </div>
+</section>
+
+<section class="donate thanks">
+    <div class="center_aligner">
+        <h3 id="payment-heading" style="color:#fff;">Thank you for your donation!</h3>
+        <p style="max-width:450px;color:#fff;margin-top:50px;margin-bottom:250px;">Thank you for your generous donation! You should receive a receipt for your payment at the email that you entered earlier.</p>
+    </div>
+</section>
+
+<section class="donate declined">
+    <div class="center_aligner">
+        <h3 id="payment-heading" style="color:#fff;">Sorry! But we were unable to process your payment.</h3>
+        <p style="color:#fff;margin-top:50px;">Please check to make sure you entered your details correctly.</p>
+        <div class="row form-row" style="margin-bottom:20px;margin-top:50px;float:right;margin-bottom:200px;">
+          <button class="button" onclick="location.reload();">Try Again</button>
+        </div>
+    </div>
+</section>
+
 <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.2.min.js"   integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous">\x3C/script>')</script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -114,44 +147,58 @@
     function enableSubmit(){
       $('#payment-form').off("submit").on("submit", function(event) {
       var $form = $(this);
-
+      
+      $(".payment-error-row").hide();
       $form.find('button').prop('disabled', true);
-
-      Stripe.card.createToken($form, function(status, response){
-        if(response.error !== undefined && response.error.message != ""){
-          $(".payment-errors").text(response.error.message);
+        
+      var email = $("[name='email']").val();
+      var name = $("[name='name']").val();
+        
+      if(name.trim() === "" || email.trim() === ""){
+          $(".payment-errors").text("Name and Email are required.").parent().show();
           $form.find('button').prop('disabled', false);
-        }else{
-          $form.find('button').prop('disabled', false);
-          var amount = $("[name='amount']").val();
-          if(isNaN(amount)){
-            alert("Amount is not valid");
+      }else{
+          Stripe.card.createToken($form, function(status, response){
+          if(response.error !== undefined && response.error.message != ""){
+            $(".payment-errors").text(response.error.message).parent().show();
+            $form.find('button').prop('disabled', false);
           }else{
-            amount = 100 * parseFloat($("[name='amount']").val());
-            var email = $("[name='email']").val();
-            var name = $("[name='name']").val();
-            var recurring = $("[name='recurring']").val();
-            
-            $.ajax({
-              url: "/pay",
-              method: "GET",
-              data: { stripeToken : response.id , amount: amount, email: email, name: name, recurring: recurring},
-              dataType: "html",
-              success: function(data){
-                if(data == "accepted"){
-                  $("#payment-heading").text("Your payment was accepted. Thank you for your donation!");
-                  $(".job-description").remove();
-                }else{
-                  $(".payment-errors").text("Sorry, but your card was declined.");
+            $form.find('button').prop('disabled', false);
+            var amount = $("[name='amount']").val();
+            if(isNaN(amount)){
+              alert("Amount is not valid");
+            }else{
+              amount = 100 * parseFloat($("[name='amount']").val());
+              var email = $("[name='email']").val();
+              var name = $("[name='name']").val();
+              var recurring = $("[name='recurring']").val();
+              $(".donate").hide();
+              $(".donate.process").show();
+              $.ajax({
+                url: "/pay",
+                method: "GET",
+                data: { stripeToken : response.id , amount: amount, email: email, name: name, recurring: recurring},
+                dataType: "html",
+                success: function(data){
+                  if(data == "accepted"){
+                    $("#payment-heading").text("Your payment was accepted. Thank you for your donation!");
+                    $(".job-description").remove();
+                    $(".donate").hide();
+                    $(".donate.thanks").show();
+                  }else{
+                    $(".payment-errors").text("Sorry, but your card was declined.");
+                    $(".donate").hide();
+                    $(".donate.declined").show();
+                  }
+                },
+                error: function(error){
+                  console.log(error);
                 }
-              },
-              error: function(error){
-                console.log(error);
-              }
-            });
+              });
+            }
           }
-        }
-      });
+        });
+      }
       return false;
     });
   }  
