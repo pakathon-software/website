@@ -11,14 +11,27 @@
         padding-left: 15px;
         padding-right: 15px;
         font-size: 14px;
+        width: calc(50% - 15px);
+        background: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+    }
+    .exp_slash{
+        text-align:center;
+        display: inline-block;
+        width: 20px;
     }
     input{
         height: 35px;
         font-size: 14px;
 //        width: calc(100% - 100px);
-        max-width: 400px;
-        width: calc(100% - 110px);
-        float: right;
+//        max-width: 400px;
+//        width: calc(100% - 110px);
+        width: 100%;
+        background: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        padding-left: 10px;
     }
     input[type=checkbox]{
         height: 20px;
@@ -30,15 +43,67 @@
         margin: 0 auto;
     }
     .donate_label{
-        width: 110px;
-        display: inline-block;
-        margin-bottom: 10px;
-        float: left;
-        line-height: 30px;
+//        width: 110px;
+//        display: inline-block;
+//        margin-bottom: 10px;
+//        float: left;
+//        line-height: 30px;
+//        display: none;
+        font-size: 14px;
+        display: block;
+        overflow: hidden;
+        top: -65px;
+        position: relative; 
+        opacity: 0;
+        transition: all 0.2s ease;
+        font-weight:bold;
     }
+  
+    input:focus~.donate_label, input.dirty~.donate_label, select.dirty~.donate_label{
+      opacity: 1;
+      top:-55px;
+    }
+  
+    select:focus~.donate_label{
+      opacity: 1;
+      top:-55px;
+    }
+  
+    ::-webkit-input-placeholder{
+      color: #fff;
+    }
+  
+    :-moz-input-placeholder{
+      color: #fff;
+    }
+  
+    ::-moz-input-placeholder{
+      color: #fff;
+    }
+  
+    ::-ms-input-placeholder{
+      color: #fff;
+    }
+  
+    input:focus::-webkit-input-placeholder{
+      color: rgba(0,0,0,0);
+    }
+    
+    input:focus:-moz-input-placeholder{
+      color: rgba(0,0,0,0);
+    }
+  
+    input:focus::-moz-input-placeholder{
+      color: rgba(0,0,0,0);
+    }
+  
+    input:focus::-ms-input-placeholder{
+      color: rgba(0,0,0,0);
+    }
+    
     #payment-heading{
         margin-top: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
   
     .row.form-row{
@@ -55,6 +120,37 @@
         color: #fff;
         padding: 16px;
         display: none;
+    }
+  
+    .amount-suggestion {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background: #77AE47;
+        color: #fff;
+        line-height: 100px;
+        text-align: center;
+        font-size: 30px;
+        margin-left: 10px;
+        transition: all 0.5s ease;
+        cursor: pointer;
+    }
+    
+    .amount-suggestion:first-of-type{
+        margin-left: 0px;
+    }
+    
+    .amount-suggestion.selected {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+    }
+    
+    .amount-suggestion.non-selected {
+        opacity: 0.7;
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
     }
   
     .meter { 
@@ -147,7 +243,7 @@
     color:#fff; 
     padding:20px;
 }
-.donate.process, .donate.thanks, .donate.declined{
+.donate.process, .donate.thanks, .donate.declined, .donate.payment{
     display: none;
 }
 @-webkit-keyframes move {

@@ -11,7 +11,35 @@
   </div>
 </section>
 
-<section class="donate">
+<section class="donate amountSelection">
+  <div class="center_aligner">
+    <h3 id="payment-heading" style="color:#fff;">Please select an amount to donate:</h3>
+    <div class="job-description large-12 medium-12 small-12 xsmall-12 text-left">
+      <div class="row" style="width:100%; max-width:500px;">
+        
+          <div class="row form-row" style="text-align:center;">
+              <div class="amount-suggestion">100</div>
+              <div class="amount-suggestion">250</div>
+              <div class="amount-suggestion">500</div>
+              <div class="amount-suggestion">1000</div>
+          </div>
+
+          <div class="row form-row" style="margin-top:50px;">
+              <input type="text" size="20" name="other_amount" placeholder="Other Amount"/>
+              <span class="donate_label">Other Amount</span>
+          </div>
+
+          <div class="row form-row" style="float:right;width:100%; max-width:500px;margin:0 auto;margin-bottom:50px;margin-top:50px;">
+            <button class="button next" type="submit" style="float:right;">Next</button>
+          </div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="donate payment">
   <div class="center_aligner">
     <h3 id="payment-heading" style="color:#fff;">Please Donate here:</h3>
     <div class="job-description large-12 medium-12 small-12 xsmall-12 text-left">
@@ -24,47 +52,37 @@
         <div class="row" style="width:100%; max-width:500px;">
 
           <div class="row form-row">
-            <label>
+              <input type="text" size="20" name="amount" placeholder="Amount"/>
               <span class="donate_label">Amount</span>
-              <input type="text" size="20" name="amount"/>
-            </label>
           </div>
 
           <div class="row form-row">
-            <label>
+              
+              <input type="text" size="20" data-stripe="number" placeholder="Card Number"/>
               <span class="donate_label">Card Number</span>
-              <input type="text" size="20" data-stripe="number"/>
-            </label>
           </div>
 
           <div class="row form-row">
-            <label>
+              
+              <input type="text" size="4" data-stripe="cvc" placeholder="CVC"/>
               <span class="donate_label">CVC</span>
-              <input type="text" size="4" data-stripe="cvc"/>
-            </label>
           </div>
 
-          <div class="row form-row">
-            <label>
+          <div class="row form-row">              
+              <select class="donate_select dirty" data-stripe="exp-month"></select>
+              <span class="exp_slash">/</span>
+              <select data-stripe="exp-year" class="dirty"></select>
               <span class="donate_label">Expiration (MM/YYYY)</span>
-              <select class="donate_select" data-stripe="exp-month"></select>
-            </label>
-            <span> / </span>
-            <select data-stripe="exp-year"></select>
           </div>
 
-          <div class="row form-row">
-            <label>
+          <div class="row form-row">              
+              <input type="text" size="100" name="name" placeholder="Name"/>
               <span class="donate_label">Name</span>
-              <input type="text" size="100" name="name"/>
-            </label>
           </div>
 
-          <div class="row form-row">
-            <label>
+          <div class="row form-row">              
+              <input type="email" size="60" name="email" placeholder="Email"/>
               <span class="donate_label">Email</span>
-              <input type="email" size="60" name="email"/>
-            </label>
           </div>
 
 <!--
@@ -77,7 +95,7 @@
 -->
 
           <div class="row form-row" style="float:right;width:100%; max-width:500px;margin:0 auto;margin-bottom:50px;margin-top:50px;">
-            <button class="button" type="submit" style="float:right;">Submit Payment</button>
+            <button class="button process" type="submit" style="float:right;">Submit Payment</button>
           </div>
 
 
@@ -119,13 +137,20 @@
 <script type="text/javascript">
   Stripe.setPublishableKey('<%=@publishable_key%>');
   $(document).ready(function(){
-    
+    initializeExpirationFields(); 
     enableSubmit();
-    initializeExpirationFields();  
   });
   
   function initializeExpirationFields(){
-      var html = "";
+      $(".donations input").off("keyup").on("keyup", function(){
+        if($(this).val().length > 0){
+          $(this).addClass("dirty");
+        }else{
+          $(this).removeClass("dirty");
+        }
+      });  
+    
+    var html = "";
       for(var i=1; i < 13; i++){
         var month = i;
         if((month + "").length == 1){
@@ -134,6 +159,9 @@
         html += "<option val='" + month + "'>" + month + "</option>";
       }
       $("[data-stripe='exp-month']").html(html);
+      var currentMonth = (new Date()).getMonth() + 1 + "";
+      currentMonth = currentMonth.length < 2 ? "0" + currentMonth : currentMonth;
+      $("[data-stripe='exp-month']").val(currentMonth);
     
       html = "";
       for(var i=0; i < 50; i++){
@@ -141,10 +169,39 @@
       }
     
       $("[data-stripe='exp-year']").html(html);
+    
     }
     
     
     function enableSubmit(){
+      
+      var amount = 0;
+      
+      $(".amount-suggestion").off("click").on("click", function(){
+          if($(this).hasClass("selected")){
+              $(".amount-suggestion").removeClass("selected").removeClass("non-selected");
+          }else{
+              $(this).removeClass("non-selected").addClass("selected");
+              $(this).siblings().removeClass("selected").addClass("non-selected");    
+          }
+      })
+      
+      $("button.next").off("click").on("click", function(){
+        if($(".amount-suggestion.selected").length > 0){
+            amount = $(".amount-suggestion.selected").text();
+        }else{
+            amount = $("[name='other_amount']").val();
+        }
+        if(amount == 0 || isNaN(amount)){
+            alert("Please enter a valid amount!");
+        }else{
+            $(".donate").hide();
+            $(".donate.payment").show();
+            $("[name='amount']").val(amount).addClass("dirty");
+        }
+        
+      });
+      
       $('#payment-form').off("submit").on("submit", function(event) {
       var $form = $(this);
       
