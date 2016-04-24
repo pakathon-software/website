@@ -25,6 +25,8 @@ class CitiesController < ApplicationController
   def show
     @resources = Resource.order('created_at DESC').limit(4)
     @faqs = @city.faqs.order('created_at ASC').limit(3)
+    @upcoming_events = @city.events.where('event_date >= ?', Date.today).order(:event_date)[0...2]
+    @past_events = @city.events.where('event_date < ?', Date.today).order(:event_date)[0...3]
   end
 
   def edit
