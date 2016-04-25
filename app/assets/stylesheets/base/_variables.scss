@@ -13,16 +13,16 @@ $pxSupport: 			"false";
 // * Values are in pixels for the sake of ease, but everything will 
 //   output in rem's. There will be pixel values added too, as a 
 //   fallback if $pxSupport is set to 'true'.
-$rowWidth: 				1200; 	// * 
-$columnGutter: 			40;		// *
-$totalColumns: 			12;
+$rowWidth: 			    1200; 	// * 
+$columnGutter: 			  40;		// *
+$totalColumns: 			  12;
 
-$defaultFloat: 			   left;
-$oppositeDirection: 	right;
+$defaultFloat: 			left;
+$oppositeDirection:    right;
 
 // Screen Size Name: 	"kick-in" size;
-$xsmallScreen:       300;
-$smallScreen:        640;
+$xsmallScreen:           300;
+$smallScreen:            640;
 $mediumScreen:			 768;
 $largeScreen: 			1025;
 
@@ -30,13 +30,13 @@ $largeScreen: 			1025;
 //----------------------------------------------------------------
 //	Colors
 //----------------------------------------------------------------
-$titleColor: 			   #333;
-$bodyColor: 			   #777;
+$titleColor: 		 #333;
+$bodyColor: 		 #777;
 
-$black: 				     #000;
+$black: 		     #000;
 $blackBackground: #373333;
 
-$white: 				     #fff;
+$white: 		     #fff;
 $offWhite:        #FAF9F7;
 
 $greenBackground: #68A54C;

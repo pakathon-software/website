@@ -95,6 +95,7 @@
                 <div class="event-image" style="background-image: url(<%= event.event_image %>)">
                 </div>
 
+                <h5 class="epsilon">Name of Event: <%= event.event_name %></h5>
                 <h5 class="epsilon">Date of Event: <%= event.event_date.to_s(:day_and_date) %></h5>
                 <h5 class="epsilon">Time of Event: <%= event.event_time.at_beginning_of_hour.strftime("%I:%M %p") %></h5>
                 <h5 class="epsilon">Venue Name: <%= event.venue_name %></h5>

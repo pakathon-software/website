@@ -410,14 +410,17 @@
       <div class="columns small-12 medium-8 large-9">
         <h2 class="section-header gamma">Upcoming Events</h2>
         
-        <% @upcoming_events.each do |event| %>
-          <ul>
-            <li>
+        <ul>
+          <% @upcoming_events.each do |event| %>
+            <li class="upcoming-event">
               <div class="bg-event text-center">
                 <div class="v-wrapper">
                   <div class="v-inner">
                     <div class="circle" style="background-image: url(<%= event.event_image %>)">
-                      <h4><%= event.event_date.to_s(:just_date) %></h4>
+                      <div class="date-and-time">
+                        <h4><%= event.event_date.to_s(:just_date) %></h4>
+                        <h5><%= event.event_time.to_s(:just_time) %></h5>
+                      </div>
                     </div>
                     <%= link_to "Learn More", event.eventpage_link, {class: "button green text-center", target: "_blank"} %>
                   </div>
@@ -425,32 +428,27 @@
               </div>
 
               <div class="event-description">
-                <div class="dates-and-address">
-                  <p class="address icon-location">
-                    77 Wynford Dr, Toronto, ON M3C 1K1
-
-                    <%#= @city.hackathon.venue_name ? "#{@city.hackathon.venue_name}" : "" %><%#= @city.hackathon.address_line_1 ? ", #{@city.hackathon.address_line_1}" : "" %><%#= @city.name ? ", #{@city.name}" : "" %><%#= @city.hackathon.postal_code ? ", #{@city.hackathon.postal_code}" : "" %>
-                  </p>
-                </div>
-
+                <h4 class="delta"><%= event.event_name.present? ? event.event_name : "Event name goes here" %></h4>
+                <h5 class="address icon-location epsilon"><%= event.venue_name %>, <%= event.address_line_1 %></h5>
                 <p class="description"><%= event.event_description %></p>
-
-                <%#= link_to "Register", "#{@city.hackathon.eventbrite_link}", {class: "button white", target: "_blank"} %>
-                <%#= link_to "Get My Ticket", "http://www.eventbrite.ca/e/pakathon-global-finals-tickets-18949737174", {class: "button white", target: "_blank"} %>
-
-            </div>
               </div>
-
-          </ul>
-        <% end %>
+            </li>
+          <% end %>
+        </ul>
       </div>
 
       <div class="columns small-12 medium-4 large-3">
-        <h2 class="section-header gamma">Upcoming Events</h2>
+        <h2 class="section-header gamma">Past Events</h2>
 
-        <% @past_events.each do |event| %>
-          <p>past events</p>
-        <% end %>
+        <ul>
+          <% @past_events.each do |event| %>
+          <li class="past-event">
+            <a href="<%= event.eventpage_link %>" target="_blank">
+              <h5 class="epsilon icon-arrow-right"><%= event.event_name %></h5>
+            </a>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </section>

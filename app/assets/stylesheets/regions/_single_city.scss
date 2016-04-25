@@ -175,19 +175,20 @@
         }
       }
 
-      &#single-city-hackathon-nav-item {
-        background: rgba(255, 255, 255, 0.3);
-      }
+      // &#single-city-hackathon-nav-item {
+      //   background: rgba(255, 255, 255, 0.3);
+      // }
 
-      &#single-city-judging-nav-item {
-        background: rgba(255, 255, 255, 0.25);
-      }
+      // &#single-city-judging-nav-item {
+      //   background: rgba(255, 255, 255, 0.25);
+      // }
 
-      &#single-city-mentors-nav-item {
-        background: rgba(255, 255, 255, 0.20);
-      }
+      // &#single-city-mentors-nav-item {
+      //   background: rgba(255, 255, 255, 0.20);
+      // }
 
-      &#single-city-judges-nav-item {
+      // &#single-city-judges-nav-item {
+      &#single-city-events-nav-item {
         background: rgba(255, 255, 255, 0.15);
       }
 
@@ -328,17 +329,36 @@
 }
 
 #single-city-events {
-  @include prop(padding, 20, 0, 0);
+  @include prop(padding, 40, 0, 0);
+
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .upcoming-event {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0 40px;
+    padding-bottom: 40px;
+
+    &:not(:last-child):after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $turq;
+    }
+  }
 
   .bg-event {
     position: relative;
-    @include prop(min-height, 300);
+    @include prop(min-height, 200);
     @include prop(width, 160);
-    background-size: 120%;
-    display: inline-block;
 
     .v-wrapper {
-      @include prop(min-height, 300);
+      @include prop(min-height, 200);
       @include prop(height, 150);
 
       .circle {
@@ -348,10 +368,12 @@
         @include prop(width, 150);
         left: 5px;
         margin-bottom: 10px;
+        background-size: cover;
+        background-position: center center;
 
         &:before {
           content: "";
-          position: absolute;
+          position: absolute; 
           background: rgba(0, 0, 0, 0.6);
           width: 100%;
           height: 100%;
@@ -362,15 +384,22 @@
       }
     }
 
-    h4 {
-      @include fontSize(16);
-      font-family: "OpenSans-Bold";
-      text-transform: uppercase;
-      line-height: 1.75;
-      color: $white;
+    .date-and-time {
       position: relative;
       z-index: 1;
-      margin-top: 60px;
+
+      h4 {
+        @include fontSize(16);
+        font-family: "OpenSans-Bold";
+        text-transform: uppercase;
+        line-height: 1.75;
+        color: $white;
+        margin-top: 53px;
+      }
+
+      h5 {
+        color: $white;
+      }
     }
 
     .button {
@@ -381,7 +410,71 @@
   }
 
   .event-description {
-    display: inline-block;
+    position: absolute;
+    left: 200px;
+    top: 0;
+    padding-right: 80px;
+
+    .delta {
+      margin-bottom: 10px;
+    }
+
+    .address {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+      position: relative;
+
+      &:before {
+        padding-right: 10px;
+        color: $greenBackground;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 95%;
+        height: 1px;
+        background-color: $turq;
+      }
+    }
+
+    .description {
+      padding-top: 20px;
+      color: $black;
+    }
+  }
+
+  .past-event {
+    margin-bottom: 2px;
+
+    a {
+      display: block;
+      background-color: $greenBackground;
+      @include pre(transition, background-color 0.3s ease-out);
+
+      &:hover {
+        background-color: lighten($greenBackground, 5);
+      }
+    }
+
+    .epsilon {
+      position: relative;
+      padding: 20px 10px;
+      margin-right: 5px;
+      color: $white;
+
+      &:before {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        font-size: 22px;
+        margin-top: -11px;
+        color: $white;
+      }
+    }
   }
 }
 
