@@ -339,6 +339,7 @@
     position: relative;
     margin: 20px 0 40px;
     padding-bottom: 40px;
+    min-height: 240px;
 
     &:not(:last-child):after {
       content: "";

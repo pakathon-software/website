@@ -404,12 +404,13 @@
       </div>
     </section> -->
   <%# end %>
-
+  
+<% if @city.events.present? %>
   <section id="single-city-events" class="menu-target" data-title="Events">
     <div class="row">
       <div class="columns small-12 medium-8 large-9">
         <h2 class="section-header gamma">Upcoming Events</h2>
-        
+      
         <ul>
           <% @upcoming_events.each do |event| %>
             <li class="upcoming-event">
@@ -452,6 +453,7 @@
       </div>
     </div>
   </section>
+<% end %>
 
   <% if @city.users.present? && (@city.users.where(type_of_user: "Team Member").length > 0 || @city.users.where(type_of_user: "City Lead").length > 0) %>
     <section id="single-city-team" class="menu-target" data-title="Team">
