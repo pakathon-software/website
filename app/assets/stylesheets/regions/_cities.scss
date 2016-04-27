@@ -102,7 +102,7 @@
     }
 
     .v-wrapper {
-      @include prop(min-height, 250);
+      @include prop(height, 250);
       position: relative;
       z-index: 3;
       overflow: hidden;

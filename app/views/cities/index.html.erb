@@ -15,7 +15,7 @@
         <% if city.name != "Global" %>
           <div id="city-<%= city.slug %>" class="admin-city-panel column large-3 medium-3 small-6 xsmall-12 text-center" style="background-image: url(<%= city.hero_photo %>)">
 
-            <% if city.eventbrite_page.present? %>
+            <%# if city.eventbrite_page.present? %>
               <!-- commenting out city page links in the interim -->
               <%# if city.name == "Melbourne" || city.name == "Toronto" || city.name == "Boston" %>
                 <!-- <a href="<%#= city_path(city) %>"> -->
@@ -23,17 +23,17 @@
                 <!-- <a href="<%#= city.eventbrite_page %>"> -->
               <%# end %>
 
-              <a href="javascript:void(0)">
+              <!-- <a href="javascript:void(0)">
               
                 <div class="v-wrapper">
                   <div class="v-inner">
-                    <h4 class="delta"><%= city.name.upcase %></h4>
+                    <h4 class="delta"><%#= city.name.upcase %></h4>
                   </div>
                 </div>
-                <!-- <span class="tag registration-open">Registration Open!</span> -->
-              </a>
-            <% else %>
-              <a href="javascript:void(0)">
+                <span class="tag registration-open">Registration Open!</span>
+              </a> -->
+            <%# else %>
+              <a href="<%= city_path(city) %>">
                 <div class="v-wrapper">
                   <div class="v-inner">
                     <h4 class="delta"><%= city.name.upcase %></h4>
@@ -41,7 +41,7 @@
                 </div>
                 <!-- <span class="tag registration-closed">Registration Opening Soon</span> -->
               </a>
-            <% end %>
+            <%# end %>
 
           </div>
         <% end %>
