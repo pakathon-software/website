@@ -337,7 +337,6 @@
 
   .upcoming-event {
     position: relative;
-    overflow: hidden;
     margin: 20px 0 40px;
     padding-bottom: 40px;
 
@@ -356,6 +355,12 @@
     position: relative;
     @include prop(min-height, 200);
     @include prop(width, 160);
+    margin: 0 auto;
+
+    @media only screen and (min-width: $smallScreen + px) {
+      position: absolute;
+      margin: 0;
+    }
 
     .v-wrapper {
       @include prop(min-height, 200);
@@ -410,10 +415,16 @@
   }
 
   .event-description {
-    position: absolute;
-    left: 200px;
+    position: relative;
     top: 0;
-    padding-right: 80px;
+    margin: 20px;
+    text-align: center;
+
+    @media only screen and (min-width: $smallScreen + px) {
+      margin-left: 200px;
+      padding-right: 80px;
+      text-align: left;
+    }
 
     .delta {
       margin-bottom: 10px;
@@ -434,10 +445,17 @@
         content: "";
         position: absolute;
         bottom: 0;
-        left: 0;
-        width: 95%;
+        left: 5%;
+        width: 90%;
         height: 1px;
         background-color: $turq;
+      }
+
+      @media only screen and (min-width: $smallScreen + px) {
+        &:after {
+          left: 0;
+          width: 95%;
+        }
       }
     }
 
