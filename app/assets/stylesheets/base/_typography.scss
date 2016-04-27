@@ -4,7 +4,7 @@
 @include font(OpenSans-LightItalic, opensans-lightitalic-webfont);
 @include font(OpenSans-Regular, opensans-regular-webfont);
 @include font(OpenSans-Semibold, opensans-semibold-webfont);
-@include font(icomoon, icomoon);
+@include font(iconfont, iconfont);
 
 h1, h2, h3, h4, h5, h6,
 .alpha, .beta, .gamma, .delta, .epsilon, .zeta {
@@ -129,7 +129,7 @@ ol {
 
 [class^="icon-"], [class*=" icon-"] {
     &:before {
-        font-family: 'icomoon';
+        font-family: 'iconfont';
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -143,6 +143,12 @@ ol {
     }
 }
 
+.icon-arrow-left:before {
+    content: "\e900";
+}
+.icon-arrow-right:before {
+    content: "\e800";
+}
 .icon-trophy:before {
     content: "\e900";
 }

@@ -87,7 +87,7 @@
           <div class="row admin-events-details">
             <h3 class="gamma">Events <%= link_to "Create New Event", new_admin_city_event_path(current_user, @city), class: "button tiny green", id: "create-event" %></h3>
 
-            <% @city.events.each do |event| %>
+            <% @city.events.order('event_date DESC').each do |event| %>
               <div class="columns xsmall-12 small-12 medium-12 large-12 single-event">
                 <%= link_to "Edit Event", edit_admin_city_event_path(current_user, @city, event), class: "button tiny orange edit-event" %>
                 <%= link_to "Delete", admin_city_event_path(current_user, @city, event), method: :delete, class: "button tiny red delete-event", data: {confirm: "Are you sure?"} %>
@@ -95,6 +95,7 @@
                 <div class="event-image" style="background-image: url(<%= event.event_image %>)">
                 </div>
 
+                <h5 class="epsilon">Name of Event: <%= event.event_name %></h5>
                 <h5 class="epsilon">Date of Event: <%= event.event_date.to_s(:day_and_date) %></h5>
                 <h5 class="epsilon">Time of Event: <%= event.event_time.at_beginning_of_hour.strftime("%I:%M %p") %></h5>
                 <h5 class="epsilon">Venue Name: <%= event.venue_name %></h5>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :cities, only: [:index, :show]
 
   resources :admins, only: [:show] do
-    resources :cities, only: [:new, :create, :edit, :update] do
+    resources :cities, only: [:new, :show, :create, :edit, :update] do
       member do
         get 'dashboard'
       end
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   resources :resources, only: [:index]
   resources :faqs, only: [:index]
 
-  resources :pages, :path => '' do
+  resources :pages, :path => '', only: [:index] do
     collection do
       # get 'toronto_baithak'
       get 'program'
@@ -59,6 +59,9 @@ Rails.application.routes.draw do
       # get 'dekhmagarpyarsay_contact_proto'
     end
   end
+
+  # resources :donations, only: [:index]
+  get 'donate' => 'donations#index', :as => :donate
 
   # resources :dekhmagarpyarsaycareers, controller: "careers", only: [:index]
 

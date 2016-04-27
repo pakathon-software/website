@@ -12,6 +12,11 @@
     <% end %>
 
     <div class="field">
+      <%= f.label :event_name, "Event Name" %><br>
+      <%= f.text_field :event_name, class: "login-text-field", required: true %>
+    </div>
+
+    <div class="field">
       <%= f.label :event_image, "Event Image (Optional)" %><br>
       <%= f.file_field :event_image, class: "file-field" %>
     </div>
@@ -47,8 +52,8 @@
     </div>    
 
     <div class="field">
-      <%= f.label :event_description, "Event Description (Optional)" %><br>
-      <%= f.text_area :event_description, class: "login-text-field" %>
+      <%= f.label :event_description, "Event Description" %><br>
+      <%= f.text_area :event_description, class: "login-text-field", required: true %>
     </div>
 
     <div class="action">

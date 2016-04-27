@@ -175,19 +175,20 @@
         }
       }
 
-      &#single-city-hackathon-nav-item {
-        background: rgba(255, 255, 255, 0.3);
-      }
+      // &#single-city-hackathon-nav-item {
+      //   background: rgba(255, 255, 255, 0.3);
+      // }
 
-      &#single-city-judging-nav-item {
-        background: rgba(255, 255, 255, 0.25);
-      }
+      // &#single-city-judging-nav-item {
+      //   background: rgba(255, 255, 255, 0.25);
+      // }
 
-      &#single-city-mentors-nav-item {
-        background: rgba(255, 255, 255, 0.20);
-      }
+      // &#single-city-mentors-nav-item {
+      //   background: rgba(255, 255, 255, 0.20);
+      // }
 
-      &#single-city-judges-nav-item {
+      // &#single-city-judges-nav-item {
+      &#single-city-events-nav-item {
         background: rgba(255, 255, 255, 0.15);
       }
 
@@ -322,6 +323,175 @@
       @media only screen and (min-width: $smallScreen + px) {
         left: 0;
         margin-left: 0;
+      }
+    }
+  }
+}
+
+#single-city-events {
+  @include prop(padding, 40, 0, 0);
+
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .upcoming-event {
+    position: relative;
+    margin: 20px 0 40px;
+    padding-bottom: 40px;
+    min-height: 240px;
+
+    &:not(:last-child):after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $turq;
+    }
+  }
+
+  .bg-event {
+    position: relative;
+    @include prop(min-height, 200);
+    @include prop(width, 160);
+    margin: 0 auto;
+
+    @media only screen and (min-width: $smallScreen + px) {
+      position: absolute;
+      margin: 0;
+    }
+
+    .v-wrapper {
+      @include prop(min-height, 200);
+      @include prop(height, 150);
+
+      .circle {
+        position: relative; 
+        background: rgba(255, 255, 255, 0.9);
+        @include prop(height, 150);
+        @include prop(width, 150);
+        left: 5px;
+        margin-bottom: 10px;
+        background-size: cover;
+        background-position: center center;
+
+        &:before {
+          content: "";
+          position: absolute; 
+          background: rgba(0, 0, 0, 0.6);
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          z-index: 0;
+        }
+      }
+    }
+
+    .date-and-time {
+      position: relative;
+      z-index: 1;
+
+      h4 {
+        @include fontSize(16);
+        font-family: "OpenSans-Bold";
+        text-transform: uppercase;
+        line-height: 1.75;
+        color: $white;
+        margin-top: 53px;
+      }
+
+      h5 {
+        color: $white;
+      }
+    }
+
+    .button {
+      font-size: 13px;
+      display: block;
+      letter-spacing: 1px;
+    }
+  }
+
+  .event-description {
+    position: relative;
+    top: 0;
+    margin: 20px;
+    text-align: center;
+
+    @media only screen and (min-width: $smallScreen + px) {
+      margin-left: 200px;
+      padding-right: 80px;
+      text-align: left;
+    }
+
+    .delta {
+      margin-bottom: 10px;
+    }
+
+    .address {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+      position: relative;
+
+      &:before {
+        padding-right: 10px;
+        color: $greenBackground;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 5%;
+        width: 90%;
+        height: 1px;
+        background-color: $turq;
+      }
+
+      @media only screen and (min-width: $smallScreen + px) {
+        &:after {
+          left: 0;
+          width: 95%;
+        }
+      }
+    }
+
+    .description {
+      padding-top: 20px;
+      color: $black;
+    }
+  }
+
+  .past-event {
+    margin-bottom: 2px;
+
+    a {
+      display: block;
+      background-color: $greenBackground;
+      @include pre(transition, background-color 0.3s ease-out);
+
+      &:hover {
+        background-color: lighten($greenBackground, 5);
+      }
+    }
+
+    .epsilon {
+      position: relative;
+      padding: 20px 10px;
+      margin-right: 5px;
+      color: $white;
+
+      &:before {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        font-size: 22px;
+        margin-top: -11px;
+        color: $white;
       }
     }
   }
