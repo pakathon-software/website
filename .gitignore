@@ -20,3 +20,8 @@ public/**
 
 # Ignore application configuration
 /config/application.yml
+server.key
+server.pass.key
+server.csr
+272159608d034e1e.crt
+gd_bundle-g2-g1.crt
