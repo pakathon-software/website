@@ -1,7 +1,7 @@
 <section class="new-logo">
   <div class="row">
     <div class="columns large-12">
-      <% if current_user.username == "taha.jalil" %>
+      <% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" %>
         <%= form_for ([current_user, @logo]), :html => {:multipart => true} do |f| %>
           <% if @logo.errors.any? %>
             <div class="error_messages">

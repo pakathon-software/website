@@ -28,7 +28,7 @@ class ResourcesController < ApplicationController
   end
 
   def my_resources
-    if current_user.username == "taha.jalil"
+    if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris"
       @resources = Resource.all
     else
       @city = City.find_by_admin_id(@admin.id)

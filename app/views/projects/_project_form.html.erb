@@ -1,4 +1,4 @@
-<% if current_user.username == "taha.jalil" || @city.admin_id == current_user.id %>
+<% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" || @city.admin_id == current_user.id %>
   <%= form_for ([current_user, @city, @project]), :html => {:multipart => true} do |f| %>
     <% if @project.errors.any? %>
       <div class="error_messages">
