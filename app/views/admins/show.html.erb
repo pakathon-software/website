@@ -1,7 +1,7 @@
 <section class="admin-main-dashboard">
   <div class="row">
     <div class="columns xsmall-12 cities-grid">
-      <% if current_user.username == "taha.jalil" %>
+      <% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" %>
         <% @cities.each do |city| %>
             <div id="city-<%= city.slug %>" class="admin-city-panel column large-3 medium-3 small-6 xsmall-12" style="background-image: url(<%= city.hero_photo %>)">
               <a href="/admins/<%= current_user.id %>/cities/<%= city.slug %>/dashboard">
