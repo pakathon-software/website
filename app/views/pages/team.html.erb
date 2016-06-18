@@ -106,7 +106,7 @@
   </div>
 </section>
 
-<% if @users.where(type_of_user: "Mentor").count > 3 %>
+<% if @users.where(type_of_user: "Mentor") %>
   <section id="team-mentors">
     <div class="row">
       <div class="columns xsmall-12 text-center">
