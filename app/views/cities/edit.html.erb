@@ -1,7 +1,7 @@
 <section id="edit-city-form">
   <div class="row">
     <div class="columns xsmall-12">
-      <% if current_user.username == "taha.jalil" || @city.admin_id == current_user.id %>
+      <% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" || @city.admin_id == current_user.id %>
         <h4 class="delta">Edit <%= @city.name %></h4>
         <%= form_for ([current_user, @city]), :html => {:multipart => true} do |f| %>
           <% if @city.errors.any? %>
@@ -15,7 +15,7 @@
             </div>
           <% end %>
 
-          <% if current_user.username == "taha.jalil" %>
+          <% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" %>
             <div class="field">
               <%= f.label :name, "Name of the City" %><br>
               <%= f.text_field :name, class: "login-text-field" %>

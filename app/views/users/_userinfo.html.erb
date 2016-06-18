@@ -1,4 +1,4 @@
-<% if current_user.username == "taha.jalil" || @city.admin_id == current_user.id %>
+<% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" || @city.admin_id == current_user.id %>
   <%= form_for ([current_user, @city, @user]), :html => {:multipart => true} do |f| %>
     <% if @city.errors.any? %>
       <div class="error_messages">
@@ -28,7 +28,7 @@
 
     <div class="field radio-field">
       <%= f.label :type_of_user %><br>
-      <% if current_user.username == "taha.jalil" %>
+      <% if current_user.username == "taha.jalil" || current_user.username == "asad" || current_user.username == "zoheb" || current_user.username == "haris" %>
         <p>
           <%= f.radio_button(:type_of_user, "Leadership") %>
           <%= f.label(:type_of_user, "Leadership") %>
