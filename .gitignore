@@ -24,4 +24,5 @@ server.key
 server.pass.key
 server.csr
 272159608d034e1e.crt
+26c772327cc5493a.crt
 gd_bundle-g2-g1.crt
