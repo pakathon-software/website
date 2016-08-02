@@ -28,7 +28,7 @@
     position: relative;
     // @include prop(top, 50);
     @include prop(padding, 0, 0, 100);
-    @include prop(min-height, 500);
+    @include prop(min-height, 400);
 
     @media only screen and (min-width: $smallScreen + px) {
       @include prop(padding, 0, 0, 50);
