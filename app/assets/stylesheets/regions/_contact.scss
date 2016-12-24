@@ -41,7 +41,8 @@
   }
 }
 
-#contact-form {
+#contact-form,
+#donations-hero {
   @include prop(padding, 90, 0, 0);
   height: 84%;
   background: asset_url('pakathonto_2014_selfie.jpg') 50% 50% no-repeat no-repeat;
@@ -78,5 +79,18 @@
     @include prop(margin-bottom, 40);
     font-family: "OpenSans-Light";
     color: $white;
+  }
+}
+
+#donations-hero {
+  padding: 0;
+
+  .gamma {
+    text-transform: uppercase;
+  }
+
+  .punch {
+    color: $white;
+    font-weight: 100;
   }
 }

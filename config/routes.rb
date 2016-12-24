@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       get 'team'
       get 'contact'
       get 'streams'
+      get 'donate'
       # get 'global_final', :path => '/global-final'
       # get 'dekhmagarpyarsay_program_proto'
       # get 'dekhmagarpyarsay_team_proto'
