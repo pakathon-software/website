@@ -14,25 +14,25 @@
           </div>
           <div class="menu-items">
             <ul>
-              <%# if @city.hackathon %>
-                <!-- <li class="single-menu-item">
-                  <a class="smooth-scroll" href="#single-city-hackathon">2016 Hackathon</a> -->
-                  <!-- <a class="smooth-scroll" href="#single-city-hackathon">Global Finals</a> -->
-                <!-- </li> -->
-              <%# end %>
+              <% if @city.hackathon %>
+                <li class="single-menu-item">
+                  <a class="smooth-scroll" href="#single-city-hackathon">2016 Hackathon</a>
+                  <a class="smooth-scroll" href="#single-city-hackathon">Global Finals</a>
+                </li>
+              <% end %>
 
-              <!-- <li class="single-menu-item">
+              <li class="single-menu-item">
                 <a class="smooth-scroll" href="#single-city-judging-and-faqs">Judging Criteria</a>
-              </li> -->
+              </li>
 
-              <%# if @city.name == "Melbourne" || @city.name == "Toronto" %>
-                <!-- <li class="single-menu-item">
+              <% if @city.name == "Melbourne" || @city.name == "Toronto" %>
+                <li class="single-menu-item">
                   <a class="smooth-scroll" href="#single-city-mentors">Mentors</a>
                 </li>
                 <li class="single-menu-item">
                   <a class="smooth-scroll" href="#single-city-judges">Judges</a>
-                </li> -->
-              <%# end %>
+                </li>
+              <% end %>
 
               <% if @city.events.present? %>
                 <li class="single-menu-item">
@@ -66,23 +66,23 @@
     <div class="row">
       <div class="inner-nav">
         <ul>
-          <%# if @city.hackathon %>
-            <!-- <li id="single-city-hackathon-nav-item">
+          <% unless @city.hackathon.blank? %>
+            <li id="single-city-hackathon-nav-item">
               <a href="#single-city-hackathon" class="smooth-scroll">
-                <p class="punch">2016 Hackathon</p> -->
-                <!-- <p class="punch">Global Finals</p> -->
-              <!-- </a>
-            </li> -->
-          <%# end %>
+                <p class="punch">2016 Hackathon</p>
+                <p class="punch">Global Finals</p>
+              </a>
+            </li>
+          <% end %>
 
-          <!-- <li id="single-city-judging-nav-item">
+          <li id="single-city-judging-nav-item">
             <a href="#single-city-judging-and-faqs" class="smooth-scroll">
               <p class="punch">Judging Criteria</p>
             </a>
-          </li> -->
+          </li>
 
-          <%# if @city.name == "Melbourne" || @city.name == "Toronto" %>
-            <!-- <li id="single-city-mentors-nav-item">
+          <% if @city.name == "Melbourne" || @city.name == "Toronto" %>
+            <li id="single-city-mentors-nav-item">
               <a href="#single-city-mentors" class="smooth-scroll">
                 <p class="punch">Mentors</p>
               </a>
@@ -91,8 +91,8 @@
               <a href="#single-city-judges" class="smooth-scroll">
                 <p class="punch">Judges</p>
               </a>
-            </li> -->
-          <%# end %>
+            </li>
+          <% end %>
 
           <% if @city.events.present? %>
             <li id="single-city-events-nav-item">
